@@ -1,6 +1,5 @@
 import { Stack } from "expo-router";
 import { useEffect, useState } from "react";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import {
   useFonts,
@@ -13,11 +12,7 @@ import {
   AmaticSC_400Regular,
   AmaticSC_700Bold,
 } from "@expo-google-fonts/amatic-sc";
-
-import Animated, { FadeIn } from "react-native-reanimated";
-import { ThemeProvider } from "@shopify/restyle";
-import theme from "@/constants/theme";
-import ErrorBoundary from "@/components/ErrorBoundary/ErrorBoundary";
+import RootLayer from "@/components/RootLayer/RootLayer";
 
 export default function RootLayout() {
   const [appReady, setAppReady] = useState(false);
@@ -39,16 +34,10 @@ export default function RootLayout() {
   }, [fontsLoaded, fontError]);
 
   return (
-    <ErrorBoundary>
-      <ThemeProvider theme={theme}>
-        <GestureHandlerRootView style={{ flex: 1 }}>
-          <Animated.View style={{ flex: 1 }} entering={FadeIn}>
-            <Stack screenOptions={{ headerShown: false }}>
-              <Stack.Screen name="index" options={{ title: "Updated" }} />
-            </Stack>
-          </Animated.View>
-        </GestureHandlerRootView>
-      </ThemeProvider>
-    </ErrorBoundary>
+    <RootLayer>
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="index" options={{ title: "Updated" }} />
+      </Stack>
+    </RootLayer>
   );
 }

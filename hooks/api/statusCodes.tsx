@@ -1,0 +1,6 @@
+export const statusCodes = {
+  SUCCESS: 200,
+  BAD_REQUEST_HTTP_CODE: 400,
+  SERVER_ERROR_HTTP_CODE: 500,
+  FETCH_ERROR: "FETCH_ERROR",
+};

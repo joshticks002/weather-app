@@ -20,15 +20,8 @@ export default function MainLayout({
 }: LayoutProps) {
   return (
     <SafeAreaView edges={["bottom"]} style={{ flex: 1 }}>
-      <Box
-        backgroundColor="white"
-        flex={1}
-        justifyContent="center"
-        paddingBottom="sm"
-        paddingHorizontal="lg"
-        paddingTop="md"
-      >
-        <Box paddingVertical="xs">
+      <Box flex={1} justifyContent="center" backgroundColor="black">
+        <Box paddingVertical="xs" mt="sm">
           <Box
             alignItems="center"
             flexDirection="row"
@@ -51,11 +44,15 @@ export default function MainLayout({
                   marginRight: 8,
                 }}
               />
-              <Text variant="regular14">{title ?? "Go back"}</Text>
+              <Text variant="regular14" color="black">
+                {title ?? "Go back"}
+              </Text>
             </Pressable>
           )}
         </Box>
-        <Box flex={1}>{children}</Box>
+        <Box flex={1} backgroundColor="white">
+          {children}
+        </Box>
       </Box>
     </SafeAreaView>
   );
