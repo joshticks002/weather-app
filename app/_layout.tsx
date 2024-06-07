@@ -13,6 +13,7 @@ import {
   AmaticSC_700Bold,
 } from "@expo-google-fonts/amatic-sc";
 import RootLayer from "@/components/RootLayer/RootLayer";
+import FlashMessage from "react-native-flash-message";
 
 export default function RootLayout() {
   const [appReady, setAppReady] = useState(false);
@@ -35,6 +36,7 @@ export default function RootLayout() {
 
   return (
     <RootLayer>
+      <FlashMessage position="top" />
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="index" options={{ title: "Updated" }} />
       </Stack>

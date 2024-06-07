@@ -12,8 +12,6 @@ export const apiInstance = axios.create({
 
 apiInstance.interceptors.response.use(
   async (result) => {
-    // console.log(result.status, "status", result.statusText, "main response");
-
     return result;
   },
   async (result) => {
@@ -35,7 +33,6 @@ apiInstance.interceptors.response.use(
       }
 
       const responseMsg: any = data?.message;
-      console.log(data, "==data", status);
 
       if (!responseMsg) {
         const serverError =
@@ -98,8 +95,6 @@ apiInstance.interceptors.response.use(
 
 apiInstance.interceptors.request.use(
   async (request) => {
-    // request.headers.set("content-type", `application/json`);
-
     return request;
   },
   (error) => Promise.reject(error),

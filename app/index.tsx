@@ -1,20 +1,30 @@
 import React from "react";
-import { Link, Stack } from "expo-router";
-import MarkdownDisplay from "@/components/MarkdownDisplay";
-import MainLayout from "@/components/Layout/MainLayout";
+import { Stack, useRouter } from "expo-router";
 import Text from "@/components/Text";
 import Box from "@/components/Box";
 import RootLayer from "@/components/RootLayer/RootLayer";
-import { Image, ImageBackground, View, StyleSheet } from "react-native";
-import SrfValue from "@/constants/SrfValue";
+import {
+  ImageBackground,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
+import { SvgIcon } from "@/constants/icons/SvgIcon";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const bgImage =
   "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/vertical-images/1.jpg";
 
 const HomeScreen = () => {
+  const router = useRouter();
+
+  const handleForecastPress = () => {
+    router.push("/forecast");
+  };
+
   return (
     <RootLayer>
-      <MainLayout title="Weather Forecast">
+      <SafeAreaView edges={[]} style={{ flex: 1 }}>
         <Stack.Screen options={{ headerShown: false }} />
         <ImageBackground
           source={{ uri: bgImage }}
@@ -29,40 +39,36 @@ const HomeScreen = () => {
               backgroundColor: "rgba(0, 0, 0, 0.5)",
             }}
           />
-          <Box mt="lg" paddingHorizontal="lg">
-            <Text color="white" variant="bigSubHeading">
-              Weather Forecast
-            </Text>
-          </Box>
+
           <Box
             flex={1}
             alignItems="center"
             justifyContent="center"
             width="100%"
           >
-            <Image
-              source={require("@/assets/images/weather.png")}
-              style={{ width: 280, height: 480, marginRight: SrfValue(30) }}
-              resizeMode="contain"
-            />
-            <Link
-              href="/forecast"
+            <Box mb="Ml">
+              <SvgIcon color="primary" name="appLogo" size="pspxll" />
+            </Box>
+
+            <TouchableOpacity
+              onPress={handleForecastPress}
               style={{
-                backgroundColor: "#B397FD",
-                paddingHorizontal: 16,
-                paddingVertical: 12,
-                borderRadius: 8,
+                paddingHorizontal: 25,
+                paddingVertical: 15,
+                borderRadius: 9999,
                 alignItems: "center",
                 justifyContent: "center",
+                borderColor: "#ffffff",
+                borderWidth: 1,
               }}
             >
               <Text color="white" textAlign="center">
-                Check weather
+                Weather Forecast
               </Text>
-            </Link>
+            </TouchableOpacity>
           </Box>
         </ImageBackground>
-      </MainLayout>
+      </SafeAreaView>
     </RootLayer>
   );
 };
