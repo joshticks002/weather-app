@@ -12,7 +12,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 2. Start the app
 
-   In the project root folder, create a .env file and add necessary key. File should be attached to mail within the same zip folder.
+   In the project root folder, if .env file is missing, create a .env file and add necessary keys. File should be attached to mail within the same zip folder.
 
 3. Start the app
 
